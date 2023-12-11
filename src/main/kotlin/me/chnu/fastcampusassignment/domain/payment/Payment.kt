@@ -18,4 +18,8 @@ internal class Payment(
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "store_id")
     val store: Store
-) : BaseEntity()
+) : BaseEntity() {
+    fun confirm() {
+        this.status = PaymentStatus.APPROVED
+    }
+}
