@@ -6,9 +6,10 @@ plugins {
     kotlin("jvm") version "1.9.20"
     kotlin("plugin.spring") version "1.9.20"
     kotlin("plugin.jpa") version "1.9.20"
+    id("org.flywaydb.flyway") version "7.12.0"
 }
 
-group = "me.chnu"
+group = "me./chnu"
 version = "0.0.1-SNAPSHOT"
 
 java {
@@ -38,7 +39,14 @@ dependencies {
 
     // db
     implementation("org.springframework.boot:spring-boot-starter-jdbc")
-    runtimeOnly("com.h2database:h2")
+    compileOnly("com.mysql:mysql-connector-j")
+
+    // flyway
+    implementation("org.flywaydb:flyway-core")
+    implementation("org.flywaydb:flyway-mysql")
+
+    // docker-compose
+    implementation("org.springframework.boot:spring-boot-docker-compose")
 
 //    // coroutine
 //    implementation("org.springframework.boot:spring-boot-starter-webflux")
@@ -71,5 +79,11 @@ tasks.withType<KotlinCompile> {
 tasks {
     withType<Test> {
         useJUnitPlatform()
+    }
+
+    flyway {
+        url = "jdbc:mysql://mysql:5005/assignment"
+        user = "root"
+        password = "fastcampus"
     }
 }
