@@ -1,0 +1,1 @@
+alter table transactions add column message varchar(255);
