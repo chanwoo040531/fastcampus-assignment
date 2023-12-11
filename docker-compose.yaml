@@ -1,0 +1,12 @@
+version: '3.1'
+services:
+  db:
+    image: mysql:8.1
+    container_name: assignment
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_DATABASE: assignment
+      MYSQL_ROOT_PASSWORD: fastcampus
+    ports:
+      - "3306:3306"
