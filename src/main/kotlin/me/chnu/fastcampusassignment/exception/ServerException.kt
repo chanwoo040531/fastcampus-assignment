@@ -9,3 +9,7 @@ internal sealed class ServerException(
 internal data class NotFoundException(
     override val message: String
 ) : ServerException(message = message)
+
+internal data class TransactionException(
+    override val message: String
+) : ServerException(message = message)
