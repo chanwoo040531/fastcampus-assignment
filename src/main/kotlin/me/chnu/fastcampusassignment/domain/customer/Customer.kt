@@ -2,7 +2,6 @@ package me.chnu.fastcampusassignment.domain.customer
 
 import jakarta.persistence.Entity
 import jakarta.persistence.Table
-import jakarta.validation.constraints.NotNull
 import me.chnu.fastcampusassignment.domain.BaseEntity
 
 @Entity

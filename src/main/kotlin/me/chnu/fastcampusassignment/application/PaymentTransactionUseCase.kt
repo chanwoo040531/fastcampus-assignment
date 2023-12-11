@@ -7,9 +7,7 @@ import me.chnu.fastcampusassignment.domain.customer.CustomerReadService
 import me.chnu.fastcampusassignment.domain.payment.Payment
 import me.chnu.fastcampusassignment.domain.payment.PaymentReadService
 import me.chnu.fastcampusassignment.domain.payment.PaymentStatus
-import me.chnu.fastcampusassignment.domain.transaction.TransactionStatus
 import me.chnu.fastcampusassignment.domain.transaction.TransactionWriteService
-import me.chnu.fastcampusassignment.exception.TransactionException
 
 @UseCase
 internal class PaymentTransactionUseCase(

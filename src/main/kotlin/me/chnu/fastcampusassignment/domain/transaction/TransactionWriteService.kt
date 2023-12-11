@@ -1,7 +1,6 @@
 package me.chnu.fastcampusassignment.domain.transaction
 
 import me.chnu.fastcampusassignment.annotation.WriteService
-import me.chnu.fastcampusassignment.domain.Key
 import me.chnu.fastcampusassignment.domain.customer.Customer
 import me.chnu.fastcampusassignment.domain.payment.Payment
 import me.chnu.fastcampusassignment.exception.TransactionException

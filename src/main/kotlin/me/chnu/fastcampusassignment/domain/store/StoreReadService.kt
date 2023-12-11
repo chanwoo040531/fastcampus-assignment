@@ -2,7 +2,6 @@ package me.chnu.fastcampusassignment.domain.store
 
 import me.chnu.fastcampusassignment.annotation.ReadService
 import me.chnu.fastcampusassignment.domain.Key
-import me.chnu.fastcampusassignment.domain.customer.CustomerRepository
 import me.chnu.fastcampusassignment.exception.NotFoundException
 import org.springframework.data.repository.findByIdOrNull
 
