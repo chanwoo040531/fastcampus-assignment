@@ -11,7 +11,9 @@ import me.chnu.fastcampusassignment.domain.payment.Payment
 internal class Transaction(
 
     @Enumerated(EnumType.STRING)
-    var status: TransactionStatus,
+    val status: TransactionStatus,
+
+    val message: String,
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
