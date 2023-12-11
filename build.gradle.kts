@@ -48,6 +48,9 @@ dependencies {
     // docker-compose
     implementation("org.springframework.boot:spring-boot-docker-compose")
 
+    // kotlin-logging
+    implementation("io.github.microutils:kotlin-logging:1.12.5")
+
 //    // coroutine
 //    implementation("org.springframework.boot:spring-boot-starter-webflux")
 //    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
