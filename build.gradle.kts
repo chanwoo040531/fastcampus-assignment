@@ -5,6 +5,7 @@ plugins {
     id("io.spring.dependency-management") version "1.1.4"
     kotlin("jvm") version "1.9.20"
     kotlin("plugin.spring") version "1.9.20"
+    kotlin("plugin.jpa") version "1.9.20"
 }
 
 group = "me.chnu"
@@ -21,23 +22,43 @@ repositories {
 extra["springModulithVersion"] = "1.1.0"
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
-    implementation("org.springframework.boot:spring-boot-starter-validation")
-    implementation("org.springframework.boot:spring-boot-starter-webflux")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
+    // kotlin
     implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
-    implementation("org.springframework.modulith:spring-modulith-starter-core")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+
+    // spring-boot
+    implementation("org.springframework.boot:spring-boot-starter-web")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("io.projectreactor:reactor-test")
-    testImplementation("org.springframework.modulith:spring-modulith-starter-test")
+
+    // validation
+    implementation("org.springframework.boot:spring-boot-starter-validation")
+
+    // jpa
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+
+    // db
+    implementation("org.springframework.boot:spring-boot-starter-jdbc")
+    runtimeOnly("com.h2database:h2")
+
+//    // coroutine
+//    implementation("org.springframework.boot:spring-boot-starter-webflux")
+//    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
+//    implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
+//    testImplementation("io.projectreactor:reactor-test")
+//
+//    // modulith
+//    implementation("org.springframework.modulith:spring-modulith-starter-core")
+//    testImplementation("org.springframework.modulith:spring-modulith-starter-test")
+//
+//    // r2dbc
+//    implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
 }
 
 dependencyManagement {
     imports {
         mavenBom("org.springframework.modulith:spring-modulith-bom:${property("springModulithVersion")}")
     }
+    //treep
 }
 
 tasks.withType<KotlinCompile> {
@@ -47,6 +68,8 @@ tasks.withType<KotlinCompile> {
     }
 }
 
-tasks.withType<Test> {
-    useJUnitPlatform()
+tasks {
+    withType<Test> {
+        useJUnitPlatform()
+    }
 }
