@@ -10,4 +10,9 @@ import me.chnu.fastcampusassignment.domain.BaseEntity
 internal class Customer(
     var name: String,
     var balance: Long,
-) : BaseEntity()
+) : BaseEntity() {
+
+    fun pay(amount: Long) {
+        this.balance - amount
+    }
+}
