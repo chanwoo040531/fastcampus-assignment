@@ -16,10 +16,10 @@ internal abstract class BaseEntity(
     val id: Key = 0L,
 
     @CreatedDate
-    val createdAt: LocalDateTime? = null,
+    var createdAt: LocalDateTime? = null,
 
     @LastModifiedDate
-    val updatedAt: LocalDateTime? = null,
+    var updatedAt: LocalDateTime? = null,
 ) {
     override fun hashCode(): Int {
         return id.hashCode()
