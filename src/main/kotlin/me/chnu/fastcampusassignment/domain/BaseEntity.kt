@@ -6,7 +6,7 @@ import org.springframework.data.annotation.LastModifiedDate
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import java.time.LocalDateTime
 
-typealias Key = Long
+internal typealias Key = Long
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener::class)
