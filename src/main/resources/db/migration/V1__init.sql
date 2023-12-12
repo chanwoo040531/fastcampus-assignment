@@ -29,8 +29,7 @@ create table stores(
 create table payments(
     id          bigint auto_increment,
     store_id    bigint not null,
-    amount      bigint,
-    status      varchar(31), -- PENDING | APPROVED | DENIED
+    status      enum('PENDING', 'APPROVED', 'DENIED'),
     created_at  timestamp(6) default current_timestamp(6),
     updated_at  timestamp(6) default current_timestamp(6) on update current_timestamp(6),
 
@@ -43,7 +42,7 @@ create table transactions(
     id              bigint auto_increment,
     customer_id     bigint not null,
     payment_id      bigint not null,
-    status          varchar(31), -- SUCCESS | FAIL
+    status          enum('SUCCESS', 'FAIL'),
     created_at  timestamp(6) default current_timestamp(6),
     updated_at  timestamp(6) default current_timestamp(6) on update current_timestamp(6),
 
