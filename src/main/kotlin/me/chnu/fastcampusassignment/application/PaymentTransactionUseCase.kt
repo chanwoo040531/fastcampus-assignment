@@ -15,6 +15,7 @@ internal class PaymentTransactionUseCase(
     private val paymentReadService: PaymentReadService,
     private val transactionWriteService: TransactionWriteService,
 ) {
+
     fun processPayment(paymentId: Key, customerId: Key) {
         val customer = customerReadService.get(customerId)
         val payment = paymentReadService.get(paymentId)
