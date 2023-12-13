@@ -1,0 +1,1 @@
+alter table payments modify column status enum('PENDING', 'APPROVED');
