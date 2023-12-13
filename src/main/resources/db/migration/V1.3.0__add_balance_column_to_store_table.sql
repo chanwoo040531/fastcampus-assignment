@@ -1,0 +1,1 @@
+alter table stores add column balance bigint;

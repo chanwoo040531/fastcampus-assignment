@@ -9,4 +9,5 @@ import me.chnu.fastcampusassignment.domain.BaseEntity
 internal class Store(
     var name: String,
     var location: String,
+    var balance: Long,
 ) : BaseEntity()
