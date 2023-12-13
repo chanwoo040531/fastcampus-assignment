@@ -1,0 +1,11 @@
+### 거래 생성
+POST localhost:1557/api/v1/payments
+Content-Type: application/json
+
+{
+  "storeId": 1,
+  "amount": 10000
+}
+
+### 거래 조회
+GET localhost:1557/api/v1/payments/1

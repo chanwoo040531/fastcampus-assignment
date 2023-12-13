@@ -1,0 +1,13 @@
+### 결제 생성
+POST localhost:1557/api/v1/transactions/execute/1
+Content-Type: application/json
+
+{
+  "id": 1
+}
+
+### 결제 조회
+GET localhost:1557/api/v1/transactions/histories
+
+### 결제 상세 조회
+GET localhost:1557/api/v1/transactions/histories/1
