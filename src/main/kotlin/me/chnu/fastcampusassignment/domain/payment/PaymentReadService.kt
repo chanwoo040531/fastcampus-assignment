@@ -9,8 +9,8 @@ import org.springframework.data.repository.findByIdOrNull
 internal class PaymentReadService(
     private val paymentRepository: PaymentRepository
 ) {
-    fun get(paymentId: Key) = paymentRepository.findByIdOrNull(paymentId)
+    fun get(paymentId: Key): Payment = paymentRepository.findByIdOrNull(paymentId)
         ?: throw NotFoundException("입력한 거래 정보가 존재하지 않습니다.")
 
-    fun getAll() = paymentRepository.findAll()
+    fun getAll(): List<Payment> = paymentRepository.findAll()
 }

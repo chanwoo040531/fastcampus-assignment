@@ -4,6 +4,7 @@ import me.chnu.fastcampusassignment.application.PaymentTransactionUseCase
 import me.chnu.fastcampusassignment.domain.Key
 import me.chnu.fastcampusassignment.domain.payment.Payment
 import me.chnu.fastcampusassignment.domain.payment.PaymentReadService
+import me.chnu.fastcampusassignment.domain.transaction.TransactionReadService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -19,6 +20,7 @@ import java.net.URI
 @RequestMapping("/api/v1/transactions")
 internal class TransactionController(
     private val paymentTransactionUseCase: PaymentTransactionUseCase,
+    private val transactionReadService: TransactionReadService,
     private val paymentReadService: PaymentReadService,
 ) {
     @PostMapping("/execute/{payment-id}")
@@ -34,10 +36,18 @@ internal class TransactionController(
 
     @GetMapping("/histories")
     @ResponseStatus(HttpStatus.OK)
-    fun getAll(): List<Payment> = paymentReadService.getAll()
+    fun getAll(): ApiResponse<List<TransactionInfo>> {
+        val response = transactionReadService.getAll().map(TransactionInfo::from)
+
+        return ApiResponse.success(response)
+    }
+
 
     @GetMapping("/histories/{transaction-id}")
     @ResponseStatus(HttpStatus.OK)
-    fun get(@PathVariable("transaction-id") transactionId: Key) =
-        paymentReadService.get(transactionId)
+    fun get(@PathVariable("transaction-id") transactionId: Key): ApiResponse<TransactionInfo> {
+        val response = transactionReadService.get(transactionId).let(TransactionInfo::from)
+
+        return ApiResponse.success(response)
+    }
 }
