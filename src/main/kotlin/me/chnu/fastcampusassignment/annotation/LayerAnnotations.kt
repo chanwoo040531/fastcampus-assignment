@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional
 @Retention(AnnotationRetention.RUNTIME)
 @MustBeDocumented
 @Component
+@Transactional
 annotation class UseCase(@get:AliasFor(annotation = Component::class) val value: String = "")
 
 @Target(AnnotationTarget.CLASS)
