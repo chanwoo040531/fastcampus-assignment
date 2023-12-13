@@ -12,6 +12,6 @@ internal class Customer(
 ) : BaseEntity() {
 
     fun pay(amount: Long) {
-        this.balance - amount
+        this.balance -= amount
     }
 }

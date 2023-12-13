@@ -19,7 +19,8 @@ internal class Payment(
     @JoinColumn(name = "store_id")
     val store: Store
 ) : BaseEntity() {
-    fun confirm() {
+    fun confirm(amount: Long) {
         this.status = PaymentStatus.APPROVED
+        this.store.balance += amount
     }
 }

@@ -15,28 +15,22 @@ internal class PaymentTransactionUseCase(
     private val paymentReadService: PaymentReadService,
     private val transactionWriteService: TransactionWriteService,
 ) {
-    fun processPayment(paymentId: Key, customerId: Key) {
+    fun processPayment(paymentId: Key, customerId: Key): Key {
         val customer = customerReadService.get(customerId)
         val payment = paymentReadService.get(paymentId)
 
-        validate(customer, payment)
-
-        customer.pay(payment.amount)
-        payment.confirm()
-        transactionWriteService.success(customer, payment)
-    }
-
-    private fun validate(customer: Customer, payment: Payment) {
         if (payment.status == PaymentStatus.APPROVED) {
-            transactionWriteService.fail(customer, payment, "이미 처리된 거래입니다.")
-        }
-
-        if (payment.status == PaymentStatus.DENIED) {
-            transactionWriteService.fail(customer, payment, "거래에 이상이 발생하였습니다.")
+            return transactionWriteService
+                .fail(customer, payment, "이미 처리된 거래입니다.")
         }
 
         if (customer.balance < payment.amount) {
-            transactionWriteService.fail(customer, payment, "잔액이 부족합니다.")
+            return transactionWriteService
+                .fail(customer, payment, "잔액이 부족합니다.")
         }
+
+        customer.pay(payment.amount)
+        payment.confirm(payment.amount)
+        return transactionWriteService.success(customer, payment)
     }
 }
