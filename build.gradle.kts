@@ -85,7 +85,7 @@ tasks {
     }
 
     flyway {
-        url = "jdbc:mysql://mysql:5005/assignment"
+        url = "jdbc:mysql://mysql:3306/assignment"
         user = "root"
         password = "fastcampus"
     }
