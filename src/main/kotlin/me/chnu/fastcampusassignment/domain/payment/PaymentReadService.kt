@@ -11,4 +11,6 @@ internal class PaymentReadService(
 ) {
     fun get(paymentId: Key) = paymentRepository.findByIdOrNull(paymentId)
         ?: throw NotFoundException("입력한 거래 정보가 존재하지 않습니다.")
+
+    fun getAll() = paymentRepository.findAll()
 }
