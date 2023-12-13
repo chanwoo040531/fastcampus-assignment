@@ -34,4 +34,12 @@ internal class PaymentController(
         val response = paymentReadService.get(paymentId).let(PaymentInfo::from)
         return ApiResponse.success(response)
     }
+
+    @GetMapping("/histories")
+    @ResponseStatus(HttpStatus.OK)
+    fun getAll() {
+        val response = paymentReadService.getAll().map(PaymentInfo::from)
+        ApiResponse.success(response)
+    }
+
 }
